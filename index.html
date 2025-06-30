@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyPet AI - Your Emotional Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Header -->
+            <header class="header">
+                <h1>TinyPet AI</h1>
+                <p class="subtitle">Your emotional companion</p>
+            </header>
+
+            <!-- Pet Setup Modal (shown on first visit) -->
+            <div id="setup-modal" class="modal">
+                <div class="modal-content card">
+                    <h2>Welcome to TinyPet AI! 🌟</h2>
+                    <p>Let's create your virtual companion</p>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="pet-name">What's your pet's name?</label>
+                        <input type="text" id="pet-name" class="form-control" placeholder="Enter a cute name...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Choose your pet type:</label>
+                        <div id="pet-types" class="pet-types-grid"></div>
+                    </div>
+                    
+                    <button id="create-pet" class="btn btn--primary btn--full-width">Create My Pet! ✨</button>
+                </div>
+            </div>
+
+            <!-- Main App Content -->
+            <div id="main-content" class="main-content hidden">
+                <!-- Navigation Tabs -->
+                <nav class="tab-nav">
+                    <button class="tab-btn active" data-tab="pet">🐾 My Pet</button>
+                    <button class="tab-btn" data-tab="journal">📝 Journal</button>
+                    <button class="tab-btn" data-tab="room">🏠 Room</button>
+                    <button class="tab-btn" data-tab="mood">📊 Mood</button>
+                    <button class="tab-btn" data-tab="wellness">🧘 Wellness</button>
+                </nav>
+
+                <!-- Pet Tab -->
+                <div id="pet-tab" class="tab-content active">
+                    <div class="pet-container">
+                        <div class="pet-display">
+                            <div id="pet-avatar" class="pet-avatar">
+                                <div id="pet-emoji" class="pet-emoji">🐰</div>
+                                <div class="pet-emotion-bubble hidden" id="emotion-bubble">
+                                    <span id="emotion-text"></span>
+                                </div>
+                            </div>
+                            <div class="pet-info">
+                                <h3 id="pet-display-name">Your Pet</h3>
+                                <div class="pet-stats">
+                                    <div class="stat">
+                                        <span class="stat-label">Happiness</span>
+                                        <div class="stat-bar">
+                                            <div id="happiness-bar" class="stat-fill"></div>
+                                        </div>
+                                        <span id="happiness-value">75</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-label">Energy</span>
+                                        <div class="stat-bar">
+                                            <div id="energy-bar" class="stat-fill"></div>
+                                        </div>
+                                        <span id="energy-value">80</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-label">Level</span>
+                                        <span id="pet-level">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pet-actions">
+                            <button class="btn btn--secondary" id="feed-btn">🍎 Feed</button>
+                            <button class="btn btn--secondary" id="play-btn">🎾 Play</button>
+                            <button class="btn btn--secondary" id="hug-btn">🤗 Hug</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Journal Tab -->
+                <div id="journal-tab" class="tab-content">
+                    <div class="journal-container">
+                        <div class="journal-input-section">
+                            <h3>How are you feeling today?</h3>
+                            <textarea id="journal-text" class="form-control journal-textarea" rows="6" placeholder="Write about your day, your feelings, or anything on your mind..."></textarea>
+                            <div class="journal-controls">
+                                <button id="analyze-emotion" class="btn btn--primary">✨ Analyze Emotion</button>
+                                <button id="save-entry" class="btn btn--secondary">💾 Save Entry</button>
+                            </div>
+                            <div id="emotion-result" class="emotion-result hidden">
+                                <div class="detected-emotion">
+                                    <span class="emotion-label">Detected emotion:</span>
+                                    <span id="detected-emotion-text"></span>
+                                    <span id="detected-emotion-emoji"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="journal-history">
+                            <h4>Previous Entries</h4>
+                            <div id="journal-entries" class="journal-entries-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Tab -->
+                <div id="room-tab" class="tab-content">
+                    <div class="room-container">
+                        <div class="room-controls">
+                            <h3>Customize Your Pet's Room</h3>
+                            <div class="room-themes">
+                                <button class="theme-btn active" data-theme="cozy">🏠 Cozy</button>
+                                <button class="theme-btn" data-theme="modern">🏢 Modern</button>
+                                <button class="theme-btn" data-theme="fantasy">🏰 Fantasy</button>
+                            </div>
+                        </div>
+                        <div class="room-layout">
+                            <div id="room-canvas" class="room-canvas" aria-label="Pet room canvas"></div>
+                            <div class="furniture-catalog">
+                                <h4>Furniture Catalog</h4>
+                                <div id="furniture-items" class="furniture-grid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mood Tab -->
+                <div id="mood-tab" class="tab-content">
+                    <div class="mood-container">
+                        <div class="mood-input">
+                            <h3>How's your mood today?</h3>
+                            <div class="mood-scale">
+                                <label class="mood-label" for="mood-slider">Rate your mood (1-10):</label>
+                                <input type="range" id="mood-slider" min="1" max="10" value="5" class="mood-range">
+                                <span id="mood-value">5</span>
+                            </div>
+                            <button id="save-mood" class="btn btn--primary">Save Mood</button>
+                        </div>
+                        <div class="mood-timeline card">
+                            <h4>Your Mood Journey</h4>
+                            <canvas id="mood-chart" height="280"></canvas>
+                        </div>
+                        <div class="mood-stats">
+                            <div class="mood-stat card">
+                                <span class="stat-emoji">😊</span>
+                                <span class="stat-text">Average Mood: <span id="avg-mood">7.2</span></span>
+                            </div>
+                            <div class="mood-stat card">
+                                <span class="stat-emoji">📈</span>
+                                <span class="stat-text">Days Tracked: <span id="days-tracked">5</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Tab -->
+                <div id="wellness-tab" class="tab-content">
+                    <div class="wellness-container">
+                        <div class="wellness-section card">
+                            <h3>Daily Affirmation</h3>
+                            <div id="daily-affirmation" class="affirmation-card">
+                                <p id="affirmation-text">You are worthy of love and happiness ✨</p>
+                                <button id="new-affirmation" class="btn btn--secondary btn--sm">New Affirmation</button>
+                            </div>
+                        </div>
+                        
+                        <div class="wellness-section card">
+                            <h3>Breathing Exercise</h3>
+                            <div class="breathing-exercise">
+                                <div id="breathing-circle" class="breathing-circle">
+                                    <span id="breathing-text">Breathe</span>
+                                </div>
+                                <button id="start-breathing" class="btn btn--primary">Start Breathing Exercise</button>
+                            </div>
+                        </div>
+                        
+                        <div class="wellness-section card">
+                            <h3>Self-Care Reminders</h3>
+                            <div class="self-care-grid">
+                                <div class="care-item">💧 Drink Water</div>
+                                <div class="care-item">🚶 Take a Walk</div>
+                                <div class="care-item">😴 Get Enough Sleep</div>
+                                <div class="care-item">🍎 Eat Healthy</div>
+                                <div class="care-item">📱 Take a Tech Break</div>
+                                <div class="care-item">💕 Practice Gratitude</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ambient Sounds -->
+        <audio id="ambient-audio" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9de64876599.mp3?filename=soft-ambient-11002.mp3" type="audio/mpeg">
+        </audio>
+        <div class="ambient-controls">
+            <button id="toggle-sounds" class="sound-btn" aria-label="Toggle ambient sounds">🔊</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

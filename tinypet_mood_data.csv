@@ -1,0 +1,31 @@
+date,journal_entry,detected_emotion,confidence,mood_score,pet_happiness,pet_response,pet_message
+2025-05-31,Feeling grateful for my friends and family.,anger,0.67,6,43.3,hide,Buddy is hiding behind a pillow 😰
+2025-06-01,Feeling a bit down today. Just one of those days.,sadness,0.95,2,45.25,comfort,Buddy wants to comfort you 🤗
+2025-06-02,Really angry about the traffic this morning.,anger,0.95,7,40.5,hide,Buddy is hiding behind a pillow 😰
+2025-06-03,Feeling a bit down today. Just one of those days.,sadness,0.95,1,45.25,comfort,Buddy wants to comfort you 🤗
+2025-06-04,Had a wonderful time with my pet today.,joy,0.95,9,64.25,dance,Buddy is dancing with joy! 🎉
+2025-06-05,Surprised by the unexpected good news!,surprise,0.67,3,53.35,curious,Buddy is curious about what happened! 👀
+2025-06-06,Feeling a bit down today. Just one of those days.,sadness,0.95,2,45.25,comfort,Buddy wants to comfort you 🤗
+2025-06-07,Surprised by the unexpected good news!,surprise,0.67,1,53.35,curious,Buddy is curious about what happened! 👀
+2025-06-08,Really angry about the traffic this morning.,anger,0.95,7,40.5,hide,Buddy is hiding behind a pillow 😰
+2025-06-09,Feeling grateful for my friends and family.,sadness,0.34,10,48.3,comfort,Buddy wants to comfort you 🤗
+2025-06-10,Feeling grateful for my friends and family.,love,0.64,2,62.8,hearts,Buddy feels so loved! ❤️
+2025-06-11,Feeling grateful for my friends and family.,anger,0.52,9,44.8,hide,Buddy is hiding behind a pillow 😰
+2025-06-12,Surprised by the unexpected good news!,surprise,0.67,8,53.35,curious,Buddy is curious about what happened! 👀
+2025-06-13,Surprised by the unexpected good news!,surprise,0.67,1,53.35,curious,Buddy is curious about what happened! 👀
+2025-06-14,Feeling anxious about the changes at work.,fear,0.95,10,42.4,protective,Buddy wants to protect you! 🛡️
+2025-06-15,Had a wonderful time with my pet today.,joy,0.95,4,64.25,dance,Buddy is dancing with joy! 🎉
+2025-06-16,Feeling grateful for my friends and family.,joy,0.58,3,58.7,dance,Buddy is dancing with joy! 🎉
+2025-06-17,Feeling anxious about the changes at work.,fear,0.95,7,42.4,protective,Buddy wants to protect you! 🛡️
+2025-06-18,Stressed about all the deadlines coming up.,surprise,0.47,6,52.35,curious,Buddy is curious about what happened! 👀
+2025-06-19,Had an amazing day at work! Everything went perfectly.,joy,0.5,5,57.5,dance,Buddy is dancing with joy! 🎉
+2025-06-20,Feeling anxious about the changes at work.,fear,0.95,5,42.4,protective,Buddy wants to protect you! 🛡️
+2025-06-21,So excited about the weekend plans!,joy,0.95,4,64.25,dance,Buddy is dancing with joy! 🎉
+2025-06-22,Had an amazing day at work! Everything went perfectly.,joy,0.5,2,57.5,dance,Buddy is dancing with joy! 🎉
+2025-06-23,Surprised by the unexpected good news!,surprise,0.67,4,53.35,curious,Buddy is curious about what happened! 👀
+2025-06-24,Surprised by the unexpected good news!,surprise,0.67,10,53.35,curious,Buddy is curious about what happened! 👀
+2025-06-25,Had a wonderful time with my pet today.,joy,0.95,3,64.25,dance,Buddy is dancing with joy! 🎉
+2025-06-26,Had an amazing day at work! Everything went perfectly.,joy,0.5,4,57.5,dance,Buddy is dancing with joy! 🎉
+2025-06-27,Stressed about all the deadlines coming up.,love,0.5,5,60.0,hearts,Buddy feels so loved! ❤️
+2025-06-28,Stressed about all the deadlines coming up.,anger,0.51,4,44.9,hide,Buddy is hiding behind a pillow 😰
+2025-06-29,Had a wonderful time with my pet today.,joy,0.95,10,64.25,dance,Buddy is dancing with joy! 🎉
